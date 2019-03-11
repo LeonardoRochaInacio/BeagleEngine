@@ -11,10 +11,13 @@ namespace Beagle.Cmd
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine(Path.CurrentDirectory());
-            Console.WriteLine(Path.CurrentDirectory());
-            Console.WriteLine(Path.CurrentDirectory());
-            Console.WriteLine(Path.CurrentDirectory());
+            var x = IniParser.SingletonInstance;
+
+            INIFile File =  x.CreateIniFile(Path.GetMyDocuments(), "leo");
+            x.RemoveSection(File, "leonaro");
+            x.SaveFile(File);
             while (true) ;
             
         }

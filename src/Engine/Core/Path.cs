@@ -16,22 +16,32 @@ namespace Beagle.Core
             Console.WriteLine("Path constructor");
         }
 
+        static public char GetPathDirectorySeparator()
+        {
+            return '/';
+        }
+
+        static public String FixPathSeparators(String _Path)
+        {
+            return _Path.Replace('\\', GetPathDirectorySeparator()) + "/";
+        }
+
         /// <summary>
         /// Get current directory path as String
         /// </summary>
         /// <returns></returns>
         static public String CurrentDirectory()
         {
-            return Environment.CurrentDirectory;
+            return FixPathSeparators(Environment.CurrentDirectory);
         }
 
         /// <summary>
         /// Get Documents directory path as String
         /// </summary>
         /// <returns></returns>
-        static public String GetDocuments()
+        static public String GetMyDocuments()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return FixPathSeparators(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
         }
 
         /// <summary>
@@ -40,7 +50,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetCommonDocuments()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            return FixPathSeparators(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments));
         }
 
         /// <summary>
@@ -49,7 +59,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetProgramFiles()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            return FixPathSeparators(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles));
         }
 
         /// <summary>
@@ -58,7 +68,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetProgramFilesx86()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            return FixPathSeparators(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86));
         }
 
         /// <summary>
@@ -67,7 +77,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineRoot()
         {
-            return "";
+            return FixPathSeparators("");
         }
 
         /// <summary>
@@ -76,7 +86,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineBin()
         {
-            return "";
+            return FixPathSeparators("");
         }
 
         /// <summary>
@@ -85,7 +95,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineResource()
         {
-            return "";
+            return FixPathSeparators("");
         }
     }
 }
