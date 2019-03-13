@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Beagle.Core;
 
 namespace Beagle.Render
 {
-    class Program
+    public static class Test
     {
-        static void Main(string[] args)
+        public static void xxxx()
         {
+            
         }
     }
 }

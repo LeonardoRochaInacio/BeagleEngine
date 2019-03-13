@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Render", "src\Engine\Render\Render.csproj", "{86F490FF-4C8A-43C2-861B-1537BADAFF67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D} = {04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmd", "src\Engine\Cmd\Cmd.csproj", "{B9CDEED6-6630-49BC-B0CA-579BEB788218}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -14,7 +17,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Engine\Core\Core.csproj", "{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407} = {5E46DCF4-C473-4171-9F9B-F3910B5EC407}
-		{86F490FF-4C8A-43C2-861B-1537BADAFF67} = {86F490FF-4C8A-43C2-861B-1537BADAFF67}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSGL", "src\ThirdParty\CSGL\CSGL.csproj", "{E586E9FD-D737-4564-BA09-68D8B1042D49}"

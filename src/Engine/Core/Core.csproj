@@ -64,7 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDefaultModule.cs" />
     <Compile Include="IniParser.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="ModuleManager.cs" />
+    <Compile Include="BeagleModuleAttribute.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

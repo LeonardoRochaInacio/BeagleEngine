@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Beagle.Core;
+using Beagle.Render;
+using System.Reflection;
 
 namespace Beagle.Cmd
 {
@@ -12,12 +10,10 @@ namespace Beagle.Cmd
         static void Main(string[] args)
         {
 
-            Console.WriteLine(Path.CurrentDirectory());
-            var x = IniParser.SingletonInstance;
+            ModuleManager.StartupModules();
 
-            INIFile File =  x.CreateIniFile(Path.GetMyDocuments(), "leo");
-            x.RemoveSection(File, "leonaro");
-            x.SaveFile(File);
+            Test.xxxx();
+
             while (true) ;
             
         }

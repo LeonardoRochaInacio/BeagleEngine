@@ -2,6 +2,7 @@
 
 namespace Beagle.Core
 {
+    
     /// <summary>
     /// Static class to manage both system and engine paths
     /// </summary>
@@ -96,6 +97,16 @@ namespace Beagle.Core
         static public String GetEngineResource()
         {
             return FixPathSeparators("");
+        }
+
+        /// <summary>
+        /// Combine two paths
+        /// </summary>
+        /// <param name="Paths"></param>
+        /// <returns></returns>
+        static public String CombinePath(params string[] Paths)
+        {
+            return System.IO.Path.Combine(Paths);
         }
     }
 }

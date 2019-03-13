@@ -77,6 +77,10 @@
       <Project>{04ab48bd-bfd2-4f7a-9c0b-9d80b21b791d}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Render\Render.csproj">
+      <Project>{86f490ff-4c8a-43c2-861b-1537badaff67}</Project>
+      <Name>Render</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
