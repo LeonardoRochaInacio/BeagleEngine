@@ -3,26 +3,21 @@
 namespace Beagle.Core
 {
     [BeagleModule]
-    class Module : IDefaultModule
+    class Module : DefaultModule
     {
-        public void Startup()
+        override public void Startup() 
         {
-            Console.WriteLine(GetLogPrefix());
+            
         }
 
-        public void Shutdown()
-        {
-           
-        }
-
-        public string GetLogPath()
+        override public string GetLogPath()
         {
             return "";
         }
 
-        public string GetLogPrefix()
+        override public string GetLogPrefix()
         {
-            return "Core_";
+            return "Core";
         }
     }
 }

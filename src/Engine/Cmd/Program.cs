@@ -14,6 +14,8 @@ namespace Beagle.Cmd
 
             Test.xxxx();
 
+            Log.Info("Pla");
+
             while (true) ;
             
         }

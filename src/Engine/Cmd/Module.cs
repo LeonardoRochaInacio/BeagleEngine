@@ -1,10 +1,10 @@
 ﻿using System;
 using Beagle.Core;
 
-namespace Beagle.Render
+namespace Beagle.Cmd
 {
     [BeagleModule]
-    class Module : Beagle.Core.DefaultModule
+    class Module : DefaultModule
     {
         override public void Startup()
         {
@@ -18,7 +18,7 @@ namespace Beagle.Render
 
         override public string GetLogPrefix()
         {
-            return "Render";
+            return "Cmd";
         }
     }
 }

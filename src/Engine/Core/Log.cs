@@ -9,18 +9,46 @@ namespace Beagle.Core
     {
         static private readonly StringBuilder Logger = new StringBuilder();
 
-        public static void Write(string Text, ConsoleColor Color, bool ShowTime = true, params object[] Params)
+        public static void Write(string Text, ConsoleColor Color, Assembly CallerAssembly, bool ShowTime = true, params object[] Params)
         {
-            string CompleteString = (ShowTime ? DateTime.Now.ToString("[HH:mm:ss]: ") : "") + Text;
+            DefaultModule Defaults;
+            string CallerName;
+            bool SearchedModule = ModuleManager.Modules.ContainsKey(CallerAssembly);
+
+            if (SearchedModule)
+            {
+                ModuleManager.Modules[CallerAssembly].GetModuleInstance(out Defaults);
+                CallerName = Defaults.GetLogPrefix();
+            }
+            else
+            {
+                CallerName = "General";
+            }
+
+            string CompleteString = "[" + CallerName + "]" + (ShowTime ? DateTime.Now.ToString("[HH:mm:ss]: ") : "") + Text;
             Console.ForegroundColor = Color;
             Console.Write(CompleteString, Params);
             Logger.Append(CompleteString);
             Console.ResetColor();
         }
 
-        public static void WriteLine(string Text, ConsoleColor Color, bool ShowTime = true, params object[] Params)
+        public static void WriteLine(string Text, ConsoleColor Color, Assembly CallerAssembly, bool ShowTime = true, params object[] Params)
         {
-            string CompleteString = (ShowTime ? DateTime.Now.ToString("[HH:mm:ss]: ") : "") + Text;
+            DefaultModule Defaults;
+            string CallerName;
+            bool SearchedModule = ModuleManager.Modules.ContainsKey(CallerAssembly);
+
+            if (SearchedModule)
+            {
+                ModuleManager.Modules[CallerAssembly].GetModuleInstance(out Defaults);
+                CallerName = Defaults.GetLogPrefix();
+            }
+            else
+            {
+                CallerName = "General";
+            }
+
+            string CompleteString = "[" + CallerName + "]" + (ShowTime ? DateTime.Now.ToString("[HH:mm:ss]: ") : "") + Text;
             Console.ForegroundColor = Color;
             Console.WriteLine(CompleteString, Params);
             Logger.Append(CompleteString);
@@ -28,28 +56,28 @@ namespace Beagle.Core
         }
 
         public static void Warning(string Text, params object[] Params)
-        {
-            WriteLine(Text, ConsoleColor.DarkYellow, true, Params);
+        { 
+            WriteLine(Text, ConsoleColor.DarkYellow, Assembly.GetCallingAssembly(), true, Params);
         }
 
         public static void Error(string Text, params object[] Params)
         {
-            WriteLine(Text, ConsoleColor.DarkRed, true, Params);
+            WriteLine(Text, ConsoleColor.DarkRed, Assembly.GetCallingAssembly(), true, Params);
         }
 
         public static void Info(string Text, params object[] Params)
         {
-            WriteLine(Text, ConsoleColor.White, true, Params);
+            WriteLine(Text, ConsoleColor.White, Assembly.GetCallingAssembly(), true, Params);
         }
 
         public static void Success(string Text, params object[] Params)
         {
-            WriteLine(Text, ConsoleColor.Green, true, Params);
+            WriteLine(Text, ConsoleColor.Green, Assembly.GetCallingAssembly(), true, Params);
         }
 
         public static void Exception(string Text, params object[] Params)
         {
-            WriteLine(Text, ConsoleColor.DarkGray, true, Params);
+            WriteLine(Text, ConsoleColor.DarkGray, Assembly.GetCallingAssembly(), true, Params);
         }
 
         public static void SaveLog(string FilePath, string FileName)

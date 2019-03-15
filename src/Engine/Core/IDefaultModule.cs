@@ -5,8 +5,6 @@ namespace Beagle.Core
     {
         void Startup();
 
-        void Shutdown();
-
         string GetLogPath();
 
         string GetLogPrefix();

@@ -11,7 +11,7 @@ namespace Beagle.Render
     {
         public static void xxxx()
         {
-            
+            Log.Warning("pass");
         }
     }
 }

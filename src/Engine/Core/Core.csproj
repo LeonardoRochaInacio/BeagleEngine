@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultModule.cs" />
     <Compile Include="IDefaultModule.cs" />
     <Compile Include="IniParser.cs" />
     <Compile Include="Log.cs" />
