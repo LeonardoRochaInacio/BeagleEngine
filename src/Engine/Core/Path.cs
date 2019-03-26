@@ -12,10 +12,7 @@ namespace Beagle.Core
         /// <summary>
         /// Static path constructor
         /// </summary>
-        static Path()
-        {
-            Console.WriteLine("Path constructor");
-        }
+        static Path(){ }
 
         static public char GetPathDirectorySeparator()
         {
@@ -78,7 +75,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineRoot()
         {
-            return FixPathSeparators("");
+            return FixPathSeparators(System.IO.Path.GetFullPath("../../../../.."));
         }
 
         /// <summary>
@@ -87,7 +84,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineBin()
         {
-            return FixPathSeparators("");
+            return FixPathSeparators(GetEngineRoot() + "bin");
         }
 
         /// <summary>
@@ -96,7 +93,16 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineResource()
         {
-            return FixPathSeparators("");
+            return FixPathSeparators(GetEngineRoot() + "Resource");
+        }
+
+        /// <summary>
+        /// Get Engine Log directory path as String
+        /// </summary>
+        /// <returns></returns>
+        static public String GetEngineLog()
+        {
+            return FixPathSeparators(GetEngineRoot() + "Log");
         }
 
         /// <summary>

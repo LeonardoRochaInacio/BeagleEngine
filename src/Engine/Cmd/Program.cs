@@ -15,8 +15,11 @@ namespace Beagle.Cmd
             Test.xxxx();
 
             Log.Info("Pla");
+            Log.Info("Test");
 
-            while (true) ;
+            Log.SaveAllLogs();
+
+            Console.ReadLine();
             
         }
     }
