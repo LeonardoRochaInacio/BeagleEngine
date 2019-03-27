@@ -75,7 +75,7 @@ namespace Beagle.Core
         /// <returns></returns>
         static public String GetEngineRoot()
         {
-            return FixPathSeparators(System.IO.Path.GetFullPath("../../../../.."));
+            return FixPathSeparators(System.IO.Path.GetFullPath("../../../../../.."));
         }
 
         /// <summary>

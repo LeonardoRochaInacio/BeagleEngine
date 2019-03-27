@@ -1,7 +1,7 @@
 ﻿using System;
 using Beagle.Core;
 using Beagle.Render;
-using System.Reflection;
+using static CSGL.Glfw3;
 
 namespace Beagle.Cmd
 {
@@ -9,18 +9,13 @@ namespace Beagle.Cmd
     {
         static void Main(string[] args)
         {
+            try
+            {
+                ModuleManager.StartupModules();
+                Window x = new Window(800, 800, "Teste");
+            }
+            catch { Log.SaveAllLogs(); new Exception(); }
 
-            ModuleManager.StartupModules();
-
-            Test.xxxx();
-
-            Log.Info("Pla");
-            Log.Info("Test");
-
-            Log.SaveAllLogs();
-
-            Console.ReadLine();
-            
         }
     }
 }

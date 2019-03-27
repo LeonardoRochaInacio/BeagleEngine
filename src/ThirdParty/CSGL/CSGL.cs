@@ -35,6 +35,7 @@ using System.Threading;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Beagle.Core;
 #endregion
 
 #region Loader
@@ -99,9 +100,9 @@ namespace CSGL
                 mHnd = LoadLibrary( filename );
 
             if ( mHnd != IntPtr.Zero )
-                Console.WriteLine( "Linked '{0}' -> '0x{1}'", filename, mHnd.ToString( "X" ) );
+                Log.Success( "Linked '{0}' -> '0x{1}'", filename, mHnd.ToString( "X" ) );
             else
-                Console.WriteLine( "Failed to link '{0}'", filename );
+                Log.Error( "Failed to link '{0}'", filename );
 
             return mHnd;
         }
@@ -137,7 +138,7 @@ namespace CSGL
                     if ( ptr != IntPtr.Zero )
                         fi.SetValue( null, Marshal.GetDelegateForFunctionPointer( ptr, fi.FieldType ) );
                     else
-                        Console.WriteLine( "Could not resolve '{0}' in loaded assembly '0x{1}'.", fi.Name, mHnd.ToString( "X" ) );
+                        Log.Error( "Could not resolve '{0}' in loaded assembly '0x{1}'.", fi.Name, mHnd.ToString( "X" ) );
                 }
             }
         }
@@ -161,7 +162,7 @@ namespace CSGL
 
     public static class Glfw3
     {
-        public static string GLFWWindows = "glfw3.dll";
+        public static string GLFWWindows = "../ThirdParty/glfw3.dll";
         public static string GLFWLinux = "./libglfw.so";
 
         private static IntPtr _glfwHnd;
@@ -4560,7 +4561,7 @@ namespace CSGL
                 throw new Exception( "Could not load OpenGL" );
             #endregion
 
-            Console.WriteLine( "Linked 'OpenGL' -> VERSION {0}", CSGL_GLVERSION );
+                Log.Success( "Linked 'OpenGL' -> VERSION {0}", CSGL_GLVERSION );
 
             return true;
         }

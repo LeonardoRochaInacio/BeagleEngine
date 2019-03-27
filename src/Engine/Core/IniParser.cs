@@ -46,6 +46,12 @@ namespace Beagle.Core
         /// </summary>
         private FileIniDataParser DataParser = new FileIniDataParser();
 
+        /// <summary>
+        /// Creats a ini file
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public INIFile CreateIniFile(String FilePath, String Name)
         {
             String CompleteFilePath = FilePath + Name + ".ini";    
@@ -63,6 +69,14 @@ namespace Beagle.Core
             }
         }
 
+        /// <summary>
+        /// Get key data
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="Section"></param>
+        /// <param name="Key"></param>
+        /// <param name="KeyData"></param>
+        /// <returns></returns>
         public bool GetKeyData(String FilePath, String Section, String Key, out String KeyData)
         {
             IniData Data;
@@ -76,66 +90,126 @@ namespace Beagle.Core
             return false;
         }
 
+        /// <summary>
+        /// Creates a section
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="SectionName"></param>
         public void CreateSection(String FilePath, String SectionName)
         {
             IniData Data;
             if (CheckFileLoad(FilePath, out Data)) Data.Sections.AddSection(SectionName);
         }
 
+        /// <summary>
+        /// Creates a section
+        /// </summary>
+        /// <param name="File"></param>
+        /// <param name="SectionName"></param>
         public void CreateSection(INIFile File, String SectionName)
         {
             IniData Data;
             if (CheckFileLoad(File.FilePath, out Data)) Data.Sections.AddSection(SectionName);
         }
 
-        public void CreateKey(String FilePath, String Section ,String KeyName, String KeyData)
+        /// <summary>
+        /// Creaes a key
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="Section"></param>
+        /// <param name="KeyName"></param>
+        /// <param name="KeyData"></param>
+        public void CreateKey(String FilePath, String Section, String KeyName, String KeyData)
         {
             IniData Data;
             if (CheckFileLoad(FilePath, out Data)) Data[Section].AddKey(KeyName, KeyData);
         }
 
+        /// <summary>
+        /// Creates a key
+        /// </summary>
+        /// <param name="File"></param>
+        /// <param name="Section"></param>
+        /// <param name="KeyName"></param>
+        /// <param name="KeyData"></param>
         public void CreateKey(INIFile File, String Section, String KeyName, String KeyData)
         {
             IniData Data;
             if (CheckFileLoad(File.FilePath, out Data)) Data[Section].AddKey(KeyName, KeyData);
         }
 
+        /// <summary>
+        /// Remove a section
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="SectionName"></param>
         public void RemoveSection(String FilePath, String SectionName)
         {
             IniData Data;
             if (CheckFileLoad(FilePath, out Data)) Data.Sections.RemoveSection(SectionName);
         }
 
+        /// <summary>
+        /// Remove a section
+        /// </summary>
+        /// <param name="File"></param>
+        /// <param name="SectionName"></param>
         public void RemoveSection(INIFile File, String SectionName)
         {
             IniData Data;
             if (CheckFileLoad(File.FilePath, out Data)) Data.Sections.RemoveSection(SectionName);
         }
 
+        /// <summary>
+        /// Remove a key
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="Section"></param>
+        /// <param name="KeyName"></param>
         public void RemoveKey(String FilePath, String Section, String KeyName)
         {
             IniData Data;
             if (CheckFileLoad(FilePath, out Data)) Data[Section].RemoveKey(KeyName);
         }
 
+        /// <summary>
+        /// Remove a key
+        /// </summary>
+        /// <param name="File"></param>
+        /// <param name="Section"></param>
+        /// <param name="KeyName"></param>
         public void RemoveKey(INIFile File, String Section, String KeyName)
         {
             IniData Data;
             if (CheckFileLoad(File.FilePath, out Data)) Data[Section].RemoveKey(KeyName);
         }
 
+        /// <summary>
+        /// Save a ini file
+        /// </summary>
+        /// <param name="FilePath"></param>
         public void SaveFile(String FilePath)
         {
             IniData Data;
             if(CheckFileLoad(FilePath, out Data)) DataParser.WriteFile(FilePath, Data);                
         }
 
+        /// <summary>
+        /// Save a ini file
+        /// </summary>
+        /// <param name="File"></param>
         public void SaveFile(INIFile File)
         {
             IniData Data;
             if (CheckFileLoad(File.FilePath, out Data)) DataParser.WriteFile(File.FilePath, Data);
         }
 
+        /// <summary>
+        /// Check if ini file is loaded.
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <param name="IniData"></param>
+        /// <returns></returns>
         private bool CheckFileLoad(String FilePath, out IniData IniData)
         {
             if (LoadedIniFiles.ContainsKey(FilePath))

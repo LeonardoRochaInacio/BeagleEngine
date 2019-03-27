@@ -1,5 +1,6 @@
-﻿using System;
-using Beagle.Core;
+﻿using Beagle.Core;
+using static CSGL.Glfw3;
+using static CSGL.CSGL;
 
 namespace Beagle.Render
 {
@@ -8,7 +9,8 @@ namespace Beagle.Render
     {
         override public void Startup()
         {
-
+            csglLoadGlfw();
+            glfwInit();
         }
 
         override public string GetLogPath()
