@@ -6,28 +6,57 @@ using static CSGL.Glfw3;
 
 namespace Beagle.Render
 {
-    public class Window
+    public sealed class Window
     {
-        private IntPtr WindowInstance; 
+        public readonly IntPtr WindowInstance;
+        public readonly int width;
+        public readonly int height;
+        public readonly string title;
 
-        public Window(int Width, int Height, string Title)
+        private void WindowHint()
         {
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 5);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+        }
 
-            WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, IntPtr.Zero);
-            
-            if(WindowInstance == null)
+        private bool WindowCreationCheck()
+        {
+            if (WindowInstance == null)
             {
                 Log.Error("Error on window creation");
-                return;
+                return false;
             }
             else
             {
-                Log.Success("Window {0} created, width: {1}, height: {2}", Title, Width, Height);
+                Log.Success("Window {0} created, width: {1}, height: {2}", title, width, height);
+                return true;
             }
+        }
 
-            glfwMakeContextCurrent(WindowInstance);
+        public Window(int Width, int Height, string Title, Window WindowShare)
+        {
+            title = Title;
+            width = Width;
+            height = Height;
+            WindowHint();
+            WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, WindowShare.WindowInstance);
+            if (!WindowCreationCheck()) return;
+        }
+
+        public Window(int Width, int Height, string Title)
+        {
+            title = Title;
+            width = Width;
+            height = Height;
+            WindowHint();
+            WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, IntPtr.Zero);
+            if (!WindowCreationCheck()) return;
+        }
+
+        /*
+         * 
+         * 
+         * glfwMakeContextCurrent(WindowInstance);
 
             csglLoadGL();
 
@@ -44,7 +73,7 @@ namespace Beagle.Render
 
             glfwTerminate();
 
-        }
+    */
 
     }
 }

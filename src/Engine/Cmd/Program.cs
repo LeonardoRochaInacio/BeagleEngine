@@ -16,6 +16,8 @@ namespace Beagle.Cmd
             }
             catch { Log.SaveAllLogs(); new Exception(); }
 
+            while (true) ;
+
         }
     }
 }
