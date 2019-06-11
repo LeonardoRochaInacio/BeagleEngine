@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using Beagle.Core;
+using static CSGL.Glfw3;
+using static CSGL.OpenGL;
 
-
-namespace Beagle.Render
+namespace Beagle.Application
 {
+    /// <summary>
+    /// Not working yet.
+    /// </summary>
     public static class WindowManager
     {
         public readonly static List<Window> Windows = new List<Window>();
-
         static WindowManager()
         {
             CreateWindow("Beagle Default Window", 1024, 1024);
@@ -31,6 +34,17 @@ namespace Beagle.Render
         }
 
         public static void AddWindowToManager(Window Window) { }
-        
+
+        public static void GlobalWindowUpdate()
+        {
+            /*while (true)
+            {
+                foreach (Window Window in Windows)
+                {
+                    Window.WindowUpdate();
+                    glfwPollEvents();
+                }
+            }*/
+        }
     }
 }

@@ -1,22 +1,22 @@
 ﻿using System;
 using Beagle.Core;
 using static CSGL.OpenGL;
-using static CSGL.CSGL;
 using static CSGL.Glfw3;
 
-namespace Beagle.Render
+namespace Beagle.Application
 {
-    public sealed class Window
+    public class Window
     {
-        public readonly IntPtr WindowInstance;
+        public IntPtr WindowInstance;
         public readonly int width;
         public readonly int height;
         public readonly string title;
+        public delegate void Del(string message);
 
         private void WindowHint()
         {
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 5);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
         }
 
         private bool WindowCreationCheck()
@@ -53,27 +53,34 @@ namespace Beagle.Render
             if (!WindowCreationCheck()) return;
         }
 
-        /*
-         * 
-         * 
-         * glfwMakeContextCurrent(WindowInstance);
+        public virtual void WindowFrameSize_Callback(int Width, int Height)
+        {
+            glViewport(0, 0, Width, Height);
+        }
 
-            csglLoadGL();
-
-            glClearColor(255.0f, 0.0f,0.0f , 1.0f);
-
-            while (glfwWindowShouldClose(WindowInstance) == 0)
+        public virtual void WindowInputProcess()
+        {
+            if (glfwGetKey(WindowInstance, GLFW_KEY_ESCAPE) == GLFW_PRESS)
             {
-                glfwPollEvents();
-
-                glClear(GL_COLOR_BUFFER_BIT);
-
-                glfwSwapBuffers(WindowInstance);
+                glfwSetWindowShouldClose(WindowInstance, 1);
             }
+        }
 
-            glfwTerminate();
-
-    */
-
+        public bool WindowUpdate()
+        {
+            if (glfwWindowShouldClose(WindowInstance) <= 0)
+            {
+                glfwMakeContextCurrent(WindowInstance);
+                WindowInputProcess();
+                glfwSwapBuffers(WindowInstance);
+                glfwPollEvents();
+                return true;
+            }
+            else
+            {
+                glfwHideWindow(WindowInstance);
+                return false;
+            }
+        }
     }
 }

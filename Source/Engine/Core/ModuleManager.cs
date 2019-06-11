@@ -125,7 +125,15 @@ namespace Beagle.Core
                 DefaultModule AlreadyLoadedModule;
                 if (Module.GetModuleInstance(out AlreadyLoadedModule))
                 {
-                    Module.ModuleType.InvokeMember("Startup", BindingFlags.InvokeMethod, null, AlreadyLoadedModule, new object[] { });
+                    Log.Info("Starting up {0}", Module.ModuleType.Module.Name);
+                    try
+                    {
+                        Module.ModuleType.InvokeMember("Startup", BindingFlags.InvokeMethod, null, AlreadyLoadedModule, new object[] { });
+                    }
+                    catch(System.NullReferenceException Ex)
+                    {
+                        Log.Success(Ex.ToString());
+                    }
                 }
                 else
                 {

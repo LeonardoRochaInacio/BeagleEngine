@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86F490FF-4C8A-43C2-861B-1537BADAFF67}</ProjectGuid>
+    <ProjectGuid>{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Beagle.Render</RootNamespace>
-    <AssemblyName>Render</AssemblyName>
+    <RootNamespace>Beagle.Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IntermediateOutputPath>$(SolutionDir)\Intermediate\$(Configuration)\$(MSBuildProjectName)\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,22 +65,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultModule.cs" />
+    <Compile Include="IDefaultModule.cs" />
+    <Compile Include="IniParser.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Module.cs" />
+    <Compile Include="ModuleManager.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Window.cs" />
-    <Compile Include="WindowManager.cs" />
+    <Compile Include="Reflection\BeagleModuleAttribute.cs" />
+    <Compile Include="Reflection\ModuleSettingsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj">
-      <Project>{e586e9fd-d737-4564-ba09-68d8b1042d49}</Project>
-      <Name>CSGL_Beagle</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{04ab48bd-bfd2-4f7a-9c0b-9d80b21b791d}</Project>
-      <Name>Core</Name>
+    <ProjectReference Include="..\..\ThirdParty\IniFileParser\INIFileParser.csproj">
+      <Project>{5e46dcf4-c473-4171-9f9b-f3910b5ec407}</Project>
+      <Name>INIFileParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

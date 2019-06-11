@@ -3,31 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Render", "src\Engine\Render\Render.csproj", "{86F490FF-4C8A-43C2-861B-1537BADAFF67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Render", "Source\Engine\Render\Render.csproj", "{86F490FF-4C8A-43C2-861B-1537BADAFF67}"
 	ProjectSection(ProjectDependencies) = postProject
 		{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D} = {04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmd", "src\Engine\Cmd\Cmd.csproj", "{B9CDEED6-6630-49BC-B0CA-579BEB788218}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cmd", "Source\Engine\Cmd\Cmd.csproj", "{B9CDEED6-6630-49BC-B0CA-579BEB788218}"
 	ProjectSection(ProjectDependencies) = postProject
 		{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D} = {04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407} = {5E46DCF4-C473-4171-9F9B-F3910B5EC407}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Engine\Core\Core.csproj", "{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Source\Engine\Core\Core.csproj", "{04AB48BD-BFD2-4F7A-9C0B-9D80B21B791D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407} = {5E46DCF4-C473-4171-9F9B-F3910B5EC407}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSGL_Beagle", "src\ThirdParty\CSGL\CSGL_Beagle.csproj", "{E586E9FD-D737-4564-BA09-68D8B1042D49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSGL_Beagle", "Source\ThirdParty\CSGL\CSGL_Beagle.csproj", "{E586E9FD-D737-4564-BA09-68D8B1042D49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{D13BDDE2-BB17-42E4-8DE2-A6D95A92F8CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharp", "src\ThirdParty\GlmSharp\GlmSharp.csproj", "{A5F19443-DD85-4398-AD24-A2B00C816771}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharp", "Source\ThirdParty\GlmSharp\GlmSharp.csproj", "{A5F19443-DD85-4398-AD24-A2B00C816771}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INIFileParser", "src\ThirdParty\IniFileParser\INIFileParser.csproj", "{5E46DCF4-C473-4171-9F9B-F3910B5EC407}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INIFileParser", "Source\ThirdParty\IniFileParser\INIFileParser.csproj", "{5E46DCF4-C473-4171-9F9B-F3910B5EC407}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{D8748CFD-7F9F-4D27-B954-3A5C15B53EF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Source\Engine\Application\Application.csproj", "{FD451FD8-8BF6-471E-9058-C8E42B9B0844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,18 @@ Global
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407}.Release|x64.Build.0 = Release|x64
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407}.Release|x86.ActiveCfg = Release|x86
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407}.Release|x86.Build.0 = Release|x86
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|x64.ActiveCfg = Debug|x64
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|x64.Build.0 = Debug|x64
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Debug|x86.Build.0 = Debug|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|x64.ActiveCfg = Release|x64
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|x64.Build.0 = Release|x64
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +136,7 @@ Global
 		{E586E9FD-D737-4564-BA09-68D8B1042D49} = {D13BDDE2-BB17-42E4-8DE2-A6D95A92F8CC}
 		{A5F19443-DD85-4398-AD24-A2B00C816771} = {D13BDDE2-BB17-42E4-8DE2-A6D95A92F8CC}
 		{5E46DCF4-C473-4171-9F9B-F3910B5EC407} = {D13BDDE2-BB17-42E4-8DE2-A6D95A92F8CC}
+		{FD451FD8-8BF6-471E-9058-C8E42B9B0844} = {D8748CFD-7F9F-4D27-B954-3A5C15B53EF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09EA697D-BFE2-4E23-B943-0B3D92C57E2F}

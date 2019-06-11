@@ -1,5 +1,4 @@
-﻿using System;
-namespace Beagle.Core
+﻿namespace Beagle.Core
 {
     [BeagleModule]
     class Module : DefaultModule

@@ -2,15 +2,20 @@
 using static CSGL.Glfw3;
 using static CSGL.CSGL;
 
-namespace Beagle.Render
+namespace Beagle.Application
 {
     [BeagleModule]
-    class Module : Beagle.Core.DefaultModule
+    class Module : DefaultModule
     {
         override public void Startup()
         {
+            Log.Info("Trying load and init Glfw");
             csglLoadGlfw();
-            glfwInit();
+            if (glfwInit() <= 0)
+            {
+                Log.Error("Error on glfwInit()");
+                return;
+            }
         }
 
         override public string GetLogPath()
@@ -20,7 +25,7 @@ namespace Beagle.Render
 
         override public string GetLogPrefix()
         {
-            return "Render";
+            return "Application";
         }
     }
 }
