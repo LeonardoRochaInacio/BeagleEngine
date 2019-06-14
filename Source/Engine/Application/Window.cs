@@ -2,6 +2,8 @@
 using Beagle.Core;
 using static CSGL.OpenGL;
 using static CSGL.Glfw3;
+using ImGuiNET;
+
 
 namespace Beagle.Application
 {
@@ -50,6 +52,9 @@ namespace Beagle.Application
             height = Height;
             WindowHint();
             WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, IntPtr.Zero);
+
+            ImGui.CreateContext();
+            
             if (!WindowCreationCheck()) return;
         }
 
@@ -71,9 +76,17 @@ namespace Beagle.Application
             if (glfwWindowShouldClose(WindowInstance) <= 0)
             {
                 glfwMakeContextCurrent(WindowInstance);
+                
                 WindowInputProcess();
+                
+                ImGui.NewFrame();
+                ImGui.ShowDemoWindow();
+                ImGui.Render();
+                ImGui.Text("asdad");
+
                 glfwSwapBuffers(WindowInstance);
                 glfwPollEvents();
+
                 return true;
             }
             else

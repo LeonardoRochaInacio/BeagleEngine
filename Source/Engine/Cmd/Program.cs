@@ -10,6 +10,7 @@ namespace Beagle.Cmd
         {
             try
             {
+                
                 ModuleManager.StartupModules();
                 Window x = new Window(800,600,"");
                 while (x.WindowUpdate()) ;
