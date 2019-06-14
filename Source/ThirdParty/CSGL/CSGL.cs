@@ -162,7 +162,7 @@ namespace CSGL
 
     public static class Glfw3
     {
-        public static string GLFWWindows = "../ThirdParty/glfw3.dll";
+        public static string GLFWWindows = "glfw3.dll";
         public static string GLFWLinux = "./libglfw.so";
 
         private static IntPtr _glfwHnd;

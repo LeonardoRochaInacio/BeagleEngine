@@ -181,9 +181,16 @@ namespace Beagle.Core
                 }
                 else
                 {
-                    
-                    System.IO.Directory.CreateDirectory(Path.GetEngineLog());
-                    File.WriteAllText(CompletePath, DefaultModuleInstance.LoggerString.ToString());
+
+                    try
+                    {
+                        Directory.CreateDirectory(Path.GetEngineLog());
+                        File.WriteAllText(CompletePath, DefaultModuleInstance.LoggerString.ToString());
+                    }
+                    catch(Exception Ex)
+                    {
+                        Log.Exception(Ex.ToString());
+                    }
                 }
             }
         }
@@ -202,7 +209,7 @@ namespace Beagle.Core
             else
             {
 
-                System.IO.Directory.CreateDirectory(Path.GetEngineLog());
+                Directory.CreateDirectory(Path.GetEngineLog());
                 File.WriteAllText(CompletePath, GeneralLoggerString.ToString());
             }
         }

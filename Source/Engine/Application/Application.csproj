@@ -7,20 +7,24 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <!--
     <OutputPath>$(SolutionDir)\Binaries\Native\$(MSBuildProjectName)\</OutputPath>
+    -->
+    <OutputPath>$(SolutionDir)\Binaries\Native\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <!--
     <OutputPath>$(SolutionDir)\Binaries\Native\$(MSBuildProjectName)\</OutputPath>
+    -->
+    <OutputPath>$(SolutionDir)\Binaries\Native\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj">
-      <Private>false</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Private>false</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj" />
+    <ProjectReference Include="..\..\ThirdParty\ImGui.NET\ImGui.NET.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 </Project>
