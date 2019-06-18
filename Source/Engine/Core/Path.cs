@@ -73,19 +73,19 @@ namespace Beagle.Core
         /// Get Engine Root directory path as String
         /// </summary>
         /// <returns></returns>
-        static public String GetEngineRoot()
-        {
-            return FixPathSeparators(System.IO.Path.GetFullPath("../../../../../.."));
-        }
+        static public String GetEngineRoot() => FixPathSeparators(System.IO.Path.GetFullPath(CombinePath(GetEngineBin(), @"../..")));
 
         /// <summary>
         /// Get Engine Binaries directory path as String
         /// </summary>
         /// <returns></returns>
-        static public String GetEngineBin()
-        {
-            return FixPathSeparators(GetEngineRoot() + "bin");
-        }
+        static public String GetEngineBin() => FixPathSeparators(AppDomain.CurrentDomain.BaseDirectory);
+
+        /// <summary>
+        /// Get Engine Binaries directory path as String
+        /// </summary>
+        /// <returns></returns>
+        static public String GetThirdPartyBin() => FixPathSeparators(System.IO.Path.GetFullPath(CombinePath(GetEngineBin(), @"../ThirdParty")));
 
         /// <summary>
         /// Get Engine Resources directory path as String

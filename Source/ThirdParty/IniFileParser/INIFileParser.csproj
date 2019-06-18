@@ -10,7 +10,7 @@
     <!--
     <OutputPath>$(SolutionDir)\Binaries\ThirdParty\$(MSBuildProjectName)\</OutputPath>
     -->
-    <OutputPath>$(SolutionDir)\Binaries\ThirdParty\</OutputPath>
+    <OutputPath>C:\Users\Leonardo\Documents\BeagleEngine\Binaries\ThirdParty\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 

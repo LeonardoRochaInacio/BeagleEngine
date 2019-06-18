@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>Beagle.Application</RootNamespace>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,7 +26,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj" />
-    <ProjectReference Include="..\..\ThirdParty\ImGui.NET\ImGui.NET.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="wx.NET">
+      <HintPath>..\..\..\Binaries\Native\wx.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

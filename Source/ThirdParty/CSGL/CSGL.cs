@@ -162,8 +162,8 @@ namespace CSGL
 
     public static class Glfw3
     {
-        public static string GLFWWindows = "glfw3.dll";
-        public static string GLFWLinux = "./libglfw.so";
+        public static string GLFWWindows =  Beagle.Core.Path.GetThirdPartyBin() + "glfw3.dll";
+        public static string GLFWLinux = Beagle.Core.Path.GetThirdPartyBin() + "libglfw.so";
 
         private static IntPtr _glfwHnd;
 

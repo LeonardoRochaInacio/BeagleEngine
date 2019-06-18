@@ -2,11 +2,34 @@
 using Beagle.Core;
 using static CSGL.OpenGL;
 using static CSGL.Glfw3;
-using ImGuiNET;
-
+using wx;
 
 namespace Beagle.Application
 {
+    public class Appx : App
+    {
+        public override bool OnInit()
+        {
+            return true;
+        }
+
+        [STAThread]
+        public static void Main()
+        {
+            
+            try
+            {
+                Appx app = new Appx();
+                app.Run();
+
+            }
+            catch (Exception x)
+            {
+                Beagle.Core.Log.Error(x.ToString());
+            }
+        }
+    }
+
     public class Window
     {
         public IntPtr WindowInstance;
@@ -25,12 +48,12 @@ namespace Beagle.Application
         {
             if (WindowInstance == null)
             {
-                Log.Error("Error on window creation");
+                Beagle.Core.Log.Error("Error on window creation");
                 return false;
             }
             else
             {
-                Log.Success("Window {0} created, width: {1}, height: {2}", title, width, height);
+                Beagle.Core.Log.Success("Window {0} created, width: {1}, height: {2}", title, width, height);
                 return true;
             }
         }
@@ -53,8 +76,6 @@ namespace Beagle.Application
             WindowHint();
             WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, IntPtr.Zero);
 
-            ImGui.CreateContext();
-            
             if (!WindowCreationCheck()) return;
         }
 
@@ -78,11 +99,6 @@ namespace Beagle.Application
                 glfwMakeContextCurrent(WindowInstance);
                 
                 WindowInputProcess();
-                
-                ImGui.NewFrame();
-                ImGui.ShowDemoWindow();
-                ImGui.Render();
-                ImGui.Text("asdad");
 
                 glfwSwapBuffers(WindowInstance);
                 glfwPollEvents();

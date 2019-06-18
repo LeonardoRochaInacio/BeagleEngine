@@ -4,5 +4,6 @@
  </Target>
  <PropertyGroup>
     <BaseIntermediateOutputPath>$(SolutionDir)\Intermediate\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 </Project>
