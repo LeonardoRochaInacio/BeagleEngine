@@ -9,13 +9,7 @@ namespace Beagle.Application
     {
         override public void Startup()
         {
-            Log.Info("Trying load and init Glfw");
-            csglLoadGlfw();
-            if (glfwInit() <= 0)
-            {
-                Log.Error("Error on glfwInit()");
-                return;
-            }
+      
         }
 
         override public string GetLogPath()

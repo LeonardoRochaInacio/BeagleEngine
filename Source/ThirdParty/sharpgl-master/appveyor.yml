@@ -1,0 +1,35 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+environment:
+  CODECOV_TOKEN: e8ebb1fe-fbb0-4dd2-9d30-9986cb2d94f4
+
+# Before building, restore Nuget packages and install dependencies.
+before_build:
+- ps: |
+    nuget restore source/SharpGL/SharpGL.sln
+    ./source/SharpGL/config.ps1
+
+build:
+  project: source/SharpGL/SharpGL.sln
+  publish_nuget: true
+  verbosity: minimal
+
+# After the build as completed, analyse coverage and upload.
+on_success:
+- ps: ./source/SharpGL/coverage.ps1
+
+# If we have a tag, deploy.
+deploy:
+- provider: NuGet
+  api_key:
+    secure: TWio+nDN8Ew7+OH7J3tLcEoM6DmxrIwfAr+2Ag8ROWJUEnXyoSAZ/I1GxBgB0qMd
+  on:
+    APPVEYOR_REPO_TAG: true
+- provider: GitHub
+  auth_token:
+    secure: KTWUORrnJKPKLSf/3ROLY50T9UfgTMnKHf3OjBOv8tlY/DAxtlglRU3eM+j45fMt
+  artifact: SharpGL.nupkg, SharpGL.WPF.nuspec, SharpGL.WinForms.nuspec
+  on:
+    APPVEYOR_REPO_TAG: true
+

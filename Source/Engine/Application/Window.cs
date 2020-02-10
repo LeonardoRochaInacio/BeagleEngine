@@ -2,34 +2,10 @@
 using Beagle.Core;
 using static CSGL.OpenGL;
 using static CSGL.Glfw3;
-using wx;
+using Beagle.GUI;
 
 namespace Beagle.Application
 {
-    public class Appx : App
-    {
-        public override bool OnInit()
-        {
-            return true;
-        }
-
-        [STAThread]
-        public static void Main()
-        {
-            
-            try
-            {
-                Appx app = new Appx();
-                app.Run();
-
-            }
-            catch (Exception x)
-            {
-                Beagle.Core.Log.Error(x.ToString());
-            }
-        }
-    }
-
     public class Window
     {
         public IntPtr WindowInstance;
@@ -96,8 +72,12 @@ namespace Beagle.Application
         {
             if (glfwWindowShouldClose(WindowInstance) <= 0)
             {
-                glfwMakeContextCurrent(WindowInstance);
                 
+                glfwMakeContextCurrent(WindowInstance);
+
+                glClearColor(1.0f, 0, 0, 1);
+                glClear(GL_COLOR_BUFFER_BIT);
+
                 WindowInputProcess();
 
                 glfwSwapBuffers(WindowInstance);

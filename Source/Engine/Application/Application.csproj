@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>Beagle.Application</RootNamespace>
     <ApplicationIcon />
@@ -27,11 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="wx.NET">
-      <HintPath>..\..\..\Binaries\Native\wx.NET.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\GUI\GUI.csproj" />
   </ItemGroup>
 </Project>

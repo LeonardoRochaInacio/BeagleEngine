@@ -23,7 +23,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ThirdParty\GlmSharp\GlmSharp.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\GUI\GUI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SharpGL">
+      <HintPath>..\..\ThirdParty\sharpgl-master\source\SharpGL\Core\SharpGL\bin\Debug\SharpGL.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
