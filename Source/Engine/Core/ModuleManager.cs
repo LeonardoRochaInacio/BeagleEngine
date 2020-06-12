@@ -11,7 +11,7 @@ namespace Beagle.Core
     /// <summary>
     /// Struct that represets a module.
     /// </summary>
-    public struct BeagleModule
+    public struct RecognizedBeagleModule
     {
         /// <summary>
         /// Type of module 
@@ -46,7 +46,7 @@ namespace Beagle.Core
         /// <param name="assembly"></param>
         /// <param name="type"></param>
         /// <param name="moduleInstance"></param>
-        public BeagleModule(Type type, DefaultModule moduleInstance)
+        public RecognizedBeagleModule(Type type, DefaultModule moduleInstance)
         {
             ModuleType = type;
             ModuleInstance = moduleInstance;
@@ -61,7 +61,7 @@ namespace Beagle.Core
         /// <summary>
         /// Save all recognized modules.
         /// </summary>
-        public static readonly Dictionary<Assembly, BeagleModule> Modules = new Dictionary<Assembly, BeagleModule>();
+        public static readonly Dictionary<Assembly, RecognizedBeagleModule> Modules = new Dictionary<Assembly, RecognizedBeagleModule>();
 
         /// <summary>
         /// ModuleManager constructor
@@ -80,17 +80,15 @@ namespace Beagle.Core
             {
                 foreach (Type Type in ASS.GetTypes())
                 {
-                    if (Type.GetCustomAttributes(typeof(BeagleModuleAttribute), true).Length > 0)
+                    if (Type.GetCustomAttributes(typeof(BeagleModule), true).Length > 0)
                     {
-                        if (Type.GetInterfaces().Length > 0 && Type.GetInterfaces()[0].Equals(typeof(IDefaultModule)))
-                        {
                             if (Assembly.GetEntryAssembly() != ASS)
                                 Log.Success("Module {0} recognized.", Type.Module.Name.Replace(".dll", ""));
                             else
-                                Log.Success("Application initialized based on {0} module.", Type.Module.Name.Replace(".exe", ""));
+                                Log.Success("Application initialized based on {0} module.", Type.Module.Name.Replace(".exe", "").Replace(".dll", ""));
                             try
                             {
-                                Modules.Add(ASS, new BeagleModule(Type, (DefaultModule)Activator.CreateInstance(Type)));
+                                Modules.Add(ASS, new RecognizedBeagleModule(Type, (DefaultModule)Activator.CreateInstance(Type)));
                             }
                             catch(ArgumentException)
                             {
@@ -104,13 +102,7 @@ namespace Beagle.Core
                                 Log.Exception(Ex);
                                 throw new InvalidCastException(Ex);
                             }
-                        }
-                        else
-                        {
-                            Log.Error("Module interface not implemented for {0}", Type.Module.Name);
-                        }
                     }
-
                 }
             }
         }
@@ -120,24 +112,25 @@ namespace Beagle.Core
         /// </summary>
         public static void StartupModules()
         {
-            foreach (BeagleModule Module in Modules.Values)
+            foreach (RecognizedBeagleModule Module in Modules.Values)
             {
                 DefaultModule AlreadyLoadedModule;
                 if (Module.GetModuleInstance(out AlreadyLoadedModule))
                 {
-                    Log.Info("Starting up {0}", Module.ModuleType.Module.Name);
+                    Log.Info("Starting up module {0}...", Module.ModuleType.Module.Name.Replace(".exe", "").Replace(".dll", ""));
                     try
                     {
                         Module.ModuleType.InvokeMember("Startup", BindingFlags.InvokeMethod, null, AlreadyLoadedModule, new object[] { });
+                        Log.Success("Module {0} started!", AlreadyLoadedModule.GetModuleName());
                     }
                     catch(System.NullReferenceException Ex)
                     {
-                        Log.Success(Ex.ToString());
+                        Log.Error(Ex.ToString());
                     }
                 }
                 else
                 {
-                    Log.Error("Module {0} impossible to startup", Module.ModuleType.Module.Name);
+                    Log.Error("Module {0} impossible to startup", Module.ModuleType.Module.Name.Replace(".exe", "").Replace(".dll", ""));
                 }
             }
         }

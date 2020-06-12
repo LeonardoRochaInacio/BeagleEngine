@@ -156,7 +156,7 @@ namespace Beagle.Core
         /// Save a specific module on its specific anme and location previously preseted
         /// </summary>
         /// <param name="Module"></param>
-        public static void SaveModuleLog(BeagleModule Module)
+        public static void SaveModuleLog(RecognizedBeagleModule Module)
         {
             if (Module.Equals(null)) return;
             DefaultModule DefaultModuleInstance;
@@ -219,7 +219,7 @@ namespace Beagle.Core
         /// </summary>
         public static void SaveAllLogs()
         {
-            foreach (BeagleModule Module in ModuleManager.Modules.Values)
+            foreach (RecognizedBeagleModule Module in ModuleManager.Modules.Values)
             {
                     Log.SaveModuleLog(Module);
             }

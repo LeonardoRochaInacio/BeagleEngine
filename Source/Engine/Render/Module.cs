@@ -2,7 +2,7 @@
 
 namespace Beagle.Render
 {
-    [BeagleModule]
+    [BeagleModule("Render")]
     class Module : Beagle.Core.DefaultModule
     {
         override public void Startup()

@@ -23,6 +23,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 </Project>

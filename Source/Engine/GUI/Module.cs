@@ -2,7 +2,7 @@
 
 namespace Beagle.GUI
 {
-    [BeagleModule]
+    [BeagleModule("GUI")]
     class Module : Beagle.Core.DefaultModule
     {
         override public void Startup()

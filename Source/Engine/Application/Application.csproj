@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\CSGL\CSGL_Beagle.csproj" />
+    <ProjectReference Include="..\..\ThirdParty\GLFW.NET\GLFW.NET.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\GUI\GUI.csproj" />
   </ItemGroup>

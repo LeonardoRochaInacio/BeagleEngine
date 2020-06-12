@@ -6,10 +6,10 @@ namespace Beagle.Core
     /// <summary>
     /// Default module. Must be inherited on Module.cs on each module.
     /// </summary>
-    public class DefaultModule : IDefaultModule
+    public class DefaultModule
     {
         /// <summary>
-        /// Abstraction, object holder of LoggetString
+        /// Abstraction, object holder of LoggerString
         /// </summary>
         private readonly StringBuilder _LoggerString = new StringBuilder();
 
@@ -21,19 +21,18 @@ namespace Beagle.Core
         /// <summary>
         /// Implements a startup method
         /// </summary>
-        virtual public void Startup()
-        {
-            
-        }
+        virtual public void Startup() { }
+
+        /// <summary>
+        /// Implements a shutdown method
+        /// </summary>
+        virtual public void Shutdown() { }
 
         /// <summary>
         /// Implements a get log path method
         /// </summary>
         /// <returns></returns>
-        virtual public string GetLogPath()
-        {
-            return "";
-        }
+        virtual public string GetLogPath() { return ""; }
 
         /// <summary>
         /// Implements a get log prefix method
@@ -41,7 +40,9 @@ namespace Beagle.Core
         /// <returns></returns>
         virtual public string GetLogPrefix()
         {
-            return "General";
+            System.Attribute[] ModuleAttributes = System.Attribute.GetCustomAttributes(this.GetType());
+            BeagleModule BeagleModuleAttribute = (BeagleModule)ModuleAttributes[0];
+            return BeagleModuleAttribute.ModuleName;
         }
 
         /// <summary>

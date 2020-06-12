@@ -1,14 +1,14 @@
 ﻿using System;
 using Beagle.Core;
-using static CSGL.OpenGL;
-using static CSGL.Glfw3;
 using Beagle.GUI;
+using GLFW;
+using static OpenGL.Gl;
 
 namespace Beagle.Application
 {
     public class Window
     {
-        public IntPtr WindowInstance;
+        public GLFW.Window WindowInstance;
         public readonly int width;
         public readonly int height;
         public readonly string title;
@@ -16,8 +16,11 @@ namespace Beagle.Application
 
         private void WindowHint()
         {
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+            Glfw.WindowHint(Hint.ClientApi, ClientApi.OpenGL);
+            Glfw.WindowHint(Hint.ContextVersionMajor, 3);
+            Glfw.WindowHint(Hint.ContextVersionMinor, 3);
+            Glfw.WindowHint(Hint.OpenglProfile, Profile.Core);
+            Glfw.WindowHint(Hint.Doublebuffer, true);
         }
 
         private bool WindowCreationCheck()
@@ -34,24 +37,13 @@ namespace Beagle.Application
             }
         }
 
-        public Window(int Width, int Height, string Title, Window WindowShare)
-        {
-            title = Title;
-            width = Width;
-            height = Height;
-            WindowHint();
-            WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, WindowShare.WindowInstance);
-            if (!WindowCreationCheck()) return;
-        }
-
         public Window(int Width, int Height, string Title)
         {
             title = Title;
             width = Width;
             height = Height;
             WindowHint();
-            WindowInstance = glfwCreateWindow(Width, Height, Title, IntPtr.Zero, IntPtr.Zero);
-
+            WindowInstance = Glfw.CreateWindow(Width, Height, Title, Monitor.None, GLFW.Window.None);
             if (!WindowCreationCheck()) return;
         }
 
@@ -62,32 +54,32 @@ namespace Beagle.Application
 
         public virtual void WindowInputProcess()
         {
-            if (glfwGetKey(WindowInstance, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            if (Glfw.GetKey(WindowInstance, Keys.Escape) == InputState.Press)
             {
-                glfwSetWindowShouldClose(WindowInstance, 1);
+                Glfw.SetWindowShouldClose(WindowInstance, true);
             }
         }
 
         public bool WindowUpdate()
         {
-            if (glfwWindowShouldClose(WindowInstance) <= 0)
+            if (Glfw.WindowShouldClose(WindowInstance) == false)
             {
-                
-                glfwMakeContextCurrent(WindowInstance);
+
+                Glfw.MakeContextCurrent(WindowInstance);
 
                 glClearColor(1.0f, 0, 0, 1);
                 glClear(GL_COLOR_BUFFER_BIT);
 
                 WindowInputProcess();
 
-                glfwSwapBuffers(WindowInstance);
-                glfwPollEvents();
+                Glfw.SwapBuffers(WindowInstance);
+                Glfw.PollEvents();
 
                 return true;
             }
             else
             {
-                glfwHideWindow(WindowInstance);
+                Glfw.HideWindow(WindowInstance);
                 return false;
             }
         }

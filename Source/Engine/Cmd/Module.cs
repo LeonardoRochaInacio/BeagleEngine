@@ -3,7 +3,7 @@ using Beagle.Core;
 
 namespace Beagle.Cmd
 {
-    [BeagleModule]
+    [BeagleModule("Cmd")]
     class Module : DefaultModule
     {
         override public void Startup()

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Beagle.Core;
-using static CSGL.Glfw3;
-using static CSGL.OpenGL;
 
 namespace Beagle.Application
 {
@@ -11,30 +9,26 @@ namespace Beagle.Application
     public static class WindowManager
     {
         public readonly static List<Window> Windows = new List<Window>();
-        static WindowManager()
-        {
-            CreateWindow("Beagle Default Window", 1024, 1024);
-        }
-
-        public static void CreateWindow(string Title, int Width, int Height)
+        public static Window CreateWindow(string Title, int Width, int Height)
         {
             if(Windows.Count == 0)
             {
-                Windows.Add(new Window(Width, Height, Title));
+                Window NewWindow = new Window(Width, Height, Title);
+                Windows.Add(NewWindow);
+                return NewWindow;
             }
             else
             {
                 Log.Error("Beagle not yet supports multi window creation");
             }
+
+            return null;
         }
 
         public static Window GetMainWindow()
         {
             return Windows[0];
         }
-
-        public static void AddWindowToManager(Window Window) { }
-
         public static void GlobalWindowUpdate()
         {
             /*while (true)
